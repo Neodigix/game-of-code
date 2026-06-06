@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Monaco Editor</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background-color: black;;
+    }
+    #container {
+        display: flex;
+    }
+    #canvas-container {
+        width: 30%;
+        border: 1px solid #000;
+    }
+    #editor-container {
+        width: 40%;
+        border: 1px solid #000;
+    }
+    #shop-container {
+        width: 40%;
+        border: 1px solid #000;
+        background-color: black;
+        color: white;
+    }
+    .shop-item{
+        display: flex;
+    }
+    .shop-item-btn{
+        width: 10%;
+    }
+    .shop-item-cost{
+        width: 10%;
+    }
+    .shop-item-description{
+        width: 80%;
+    }
+    @media (max-width: 640px) {
+        #canvas-container {
+            width: 100%;
+        }
+        #editor-container {
+            width: 100%;
+        }
+        #shop-container {
+            width: 100%;
+        }
+        #container {
+            flex-direction: column;
+        }
+    }
+    
+    .hlError {
+      background: rgba(255, 0, 0, 0.25);
+      font-weight: bold;
+    }
+    
+    .hlWarn {
+      background: rgba(255, 165, 0, 0.25);
+      color: orange;
+    }
+    
+    .hlOk {
+      background: rgba(0, 255, 0, 0.2);
+      color: green;
+    }
+    
+    .hlDefault {
+      background: rgba(200, 200, 200, 0.2);
+    }
+  </style>
+</head>
+
+<body>
+  
+  <div id="container">
+      <div id="canvas-container">
+          <canvas id="gameCanvas"></canvas>
+      </div>
+      <div id="editor-container"></div>
+      <div id="shop-container">
+      </div>
+  </div>
+  <button onclick="runGame()">RUN</button>
+  <button onclick="runStep()">Step</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/monaco-editor@latest/min/vs/loader.js"></script>
+  
+  <script>
+    let lastSaved = localStorage.getItem('lvl_1_edit');
+    if(lastSaved === null){
+      lastSaved = 'return LEFT;';
+    }
+  </script>
+  <script src="shop_options.js"></script>
+  <script src="shop.js"></script>
+  <script src="draw.js"></script>
+  <script src="game_object.js"></script>
+  <script src="player.js"></script>
+  <script src="food.js"></script>
+  <script src="enemy.js"></script>
+  <script src="board.js"></script>
+  <script src="game.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
